@@ -1,0 +1,58 @@
+{
+  "videos" : [
+    {
+      "videoCaptureName": "london_part1",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "1",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "15"
+    },
+    {
+      "videoCaptureName": "london_part2",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "2",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "14"
+    },
+    {
+      "videoCaptureName": "london_part3",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "3",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "10"
+    },
+    {
+      "videoCaptureName": "london_part4",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "4",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "13"
+    },
+    {
+      "videoCaptureName": "london_part5",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "5",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "16"
+    },
+    {
+      "videoCaptureName": "london_part6",
+      "videoCaptureFormat": "mp4",
+      "frameRate" : 30,
+      "cameraLocation": "6",
+      "date": "2020-10-24",
+      "startTime": "14:10:00",
+      "vidLengthSec": "13"
+    }
+  ]
+};

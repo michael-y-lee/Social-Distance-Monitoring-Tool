@@ -1,0 +1,123 @@
+{"cameras": [
+  {
+    "cameraNum": "1",
+    "cameraName": "cam1",
+    "cameraDescription": "Bond Street Station, SW Entrance - Oxford Street at Davies Street - South Sidewalk",
+    "camLocation": [51.51428609561539, -0.14954590732371478],
+    "cameraDirection": 112.48,
+    "cameraField": {
+      "x": 300,
+      "y": 230,
+      "height": 90,
+      "width": 290,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 280,
+      "camDotY": 230
+    }
+  },
+  {
+    "cameraNum": "2",
+    "cameraName": "cam2",
+    "cameraDescription": "Bond Street Station, SE Entrance - Oxford Street at Marlebone Place - South Sidewalk",
+    "camLocation": [51.514433193381464, -0.14857340936151364],
+    "cameraDirection": 247.34,
+    "cameraField": {
+      "x": 150,
+      "y": 210,
+      "height": 120,
+      "width": 120,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 100,
+      "camDotY": 100
+    }
+  },
+  {
+    "cameraNum": "3",
+    "cameraName": "cam3",
+    "cameraDescription": "Oxford Street at New Bond Street - South Sidewalk",
+    "camLocation": [51.514563834675585, -0.14740966435700548],
+    "cameraDirection": 178.30,
+    "cameraField": {
+      "x": 200,
+      "y": 190,
+      "height": 120,
+      "width": 120,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 100,
+      "camDotY": 100
+    }
+  },
+  {
+    "cameraNum": "4",
+    "cameraName": "cam4",
+    "cameraDescription": "Oxford Street at Blenheim Street - South Sidewalk",
+    "camLocation": [51.51452798909471, -0.14768034522184567],
+    "cameraDirection": 109.76,
+    "cameraField": {
+      "x": 300,
+      "y": 200,
+      "height": 120,
+      "width": 120,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 100,
+      "camDotY": 100
+    }
+  },
+  {
+    "cameraNum": "5",
+    "cameraName": "cam5",
+    "cameraDescription": "Oxford Street at Stratford Place - South Sidewalk",
+    "camLocation": [51.51453060417939, -0.1469601313907443],
+    "cameraDirection": 63.33,
+    "cameraField": {
+      "x": 60,
+      "y": 160,
+      "height": 120,
+      "width": 120,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 100,
+      "camDotY": 100
+    }
+  },
+  {
+    "cameraNum": "6",
+    "cameraName": "cam6",
+    "cameraDescription": "Oxford Street at Stratford Place - South Sidewalk",
+    "camLocation": [51.51437198373738, -0.1490313039571228],
+    "cameraDirection": 106.34,
+    "cameraField": {
+      "x": 300,
+      "y": 170,
+      "height": 120,
+      "width": 320,
+      "rotation": 0,
+      "caliboffsetx": 0,
+      "caliboffsety": 0,
+      "scaleX":0.070,
+      "scaleY":0.070,
+      "camDotX": 260,
+      "camDotY": 170
+    }
+  }
+]
+}

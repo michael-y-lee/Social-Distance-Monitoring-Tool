@@ -1,0 +1,22 @@
+# The following line will download a Docker image that already is set up with python 3.7, so that we can run our
+# simple web application.
+
+# citing https://hub.docker.com/r/jjanzic/docker-python3-opencv/ for reference
+
+FROM python:3.7-slim-buster
+
+# This exposes the port 8083 so that Docker container can receive requests through this port.
+EXPOSE 8083
+
+# Copy our python script over to the Docker container.
+COPY . .
+
+# Need to download and install packages
+FROM jjanzic/docker-python3-opencv
+COPY . /app
+WORKDIR /app
+
+RUN pip3 install -r requirements.txt
+
+# Run our python script/application in the Docker container.
+CMD python maskdetection.py

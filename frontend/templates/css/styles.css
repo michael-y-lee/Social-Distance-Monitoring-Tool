@@ -1,0 +1,117 @@
+
+/* ELEMENTS */
+
+body {
+    color: #000000;
+    background-color: #f1edeeff;
+    font-size: 1.5vh;
+}
+
+
+
+/* CLASSES */
+
+.btn {
+    font-size: 2vh;
+    margin: 1vh;
+}
+
+.popRule {
+    height: 1px;
+    background-color: #000000;
+    border: none;
+}
+
+.camPreview {
+    width: 20vw;
+    height: 20vh;
+}
+
+.footerPop {
+    color: crimson;
+}
+
+.bordered {
+    border-style: solid;
+    border-width: 2px;
+}
+
+/* IDs */
+
+#configVars {
+    display:none;
+}
+
+#camera-map {
+    width: 33vw;
+    height: 50vh;
+}
+
+#plan-view {
+    height: 40vh;
+    width: 33vw;
+    opacity: 0.7
+}
+
+#camPreviewVideo {
+    width: 20vw;
+    height: 20vh;
+}
+
+#sdvideo {
+    width: 30vw;
+}
+
+#mwvideo {
+    width: 30vw;
+}
+
+#vid-timestamp-secs {
+    font-size: 3vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+#vid-timestamp-frames {
+    font-size: 2vh;
+    text-align: center;
+}
+
+#compliance-chart-cam {
+    width: 33vw;
+    height: 21vh;
+    margin: 0vh;
+}
+
+#compliance-chart-street {
+    width: 33vw;
+    height: 21vh;
+    margin: 0vh;
+}
+
+
+#socialDistancingResults {
+    position: absolute;
+    top: 28vh;
+    left: 56.5vw;
+    color:white;
+    background-color: cornflowerblue;
+    height: 16vh;
+    width: 8vw;
+    padding: 1vh;
+}
+
+#maskWearingResults{
+    position: absolute;
+    top: 72.5vh;
+    left: 56.5vw;
+    color:white;
+    background-color: orangered;
+    height: 8vh;
+    width: 8vw;
+    padding: 1vh;
+}
+
+.hiddenflag {
+    display:none;
+}

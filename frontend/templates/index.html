@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+	<title>Social Distancing Monitor</title>
+
+	<!-- Load CSS libraries -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/leaflet.css') }}">
+
+	<!-- Local Style Sheets-->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+	<!-- GOOGLE FONTS -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic,300italic' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid">
+
+	<div class="row justify-content-center">
+		<div class="align-self-center">
+			<p class="creditsText" >AC295 - Final Project - Next Top Model</p>
+		</div>
+	</div>
+
+	<div class="row justify-content-center">
+
+		<div class="col-4">
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<div id="camera-map"></div>
+					<!--camera map -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<h4 id="cam-city">Cam #01 - Bond Street, London UK</h4>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<p id="cam-location">Location: DEFAULT HERE</p>
+				</div>
+			</div>
+			<div class="row justify-content-center bordered">
+				<div class="align-self-center">
+					<h3>Camera Videos:</h3>
+					<p>Please select a video below:</p>
+					<div id="camera-clips"></div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-4">
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<h2 style="font-weight: bold">Social Distancing Monitor</h2>
+					<!-- page title -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<div id="sd-video-container"></div>
+					<div id="sd-stats-box"></div>
+					Social Distancing
+					<!--social distancing video -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<div id="mw-video-container"></div>
+					<div id="mw-stats-box"></div>
+					Mask Wearing
+					<!--mask wearing video -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					Video Playback:
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<button class="btn btn-primary" onclick="playPause()">Play/Pause</button>&nbsp&nbsp&nbsp
+					<button class="btn btn-primary" onclick="rewind()">Restart</button>
+					<!--video controls wearing video -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<div id="vid-timestamp-secs">00:00:00</div>
+					<div id="vid-timestamp-frames">Frame 0000</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<div class="col-4">
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<div id="plan-view"></div>
+					<!-- plan view playback -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div Wclass="align-self-center">
+					<p style="margin-top: 2vh; margin-bottom:1vh;">Social Distancing Chart - <b>This Camera:</b></p>
+					<div id="compliance-chart-cam"></div>
+					<!-- compliance chart cam -->
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="align-self-center">
+					<p style="margin-top: 2vh; margin-bottom:1vh;">Social Distancing Chart - <b>This Street:</b></p>
+					<div id="compliance-chart-street"></div>
+					<!-- compliance chart street -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<hr class="popRule">
+<div class="row justify-content-center">
+	<div class="align-self-center">
+		<p class="footerText">Professor: Pavlos Protopapas | Institute for Applied Computational Science | <b class="footerPop">Harvard University</b> | Student Work by: Michael Lee, Jose Lopez, Micah Nickerson, Victor Sheng</p>
+	</div>
+</div>
+
+
+<!--identifier label for JS backend interconnect! DO NOT REMOVE ME-->
+<div class="hiddenflag" id="clipprocessingflag">
+	{{processingStatus}}
+</div>
+
+
+<!-- embedding JS libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+<!-- Leaflet Map Library -->
+<script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+
+<!-- d3 -->
+<script src="https://d3js.org/d3.v6.min.js"></script>
+
+<!-- Visualization objects -->
+<script src="{{ url_for('static', filename='js/cameraMap.js') }}"></script>
+<script src="{{ url_for('static', filename='js/videoDisplay.js') }}"></script>
+<script src="{{ url_for('static', filename='js/resultsChartCam.js') }}"></script>
+<script src="{{ url_for('static', filename='js/resultsChartLocation.js') }}"></script>
+<script src="{{ url_for('static', filename='js/socialDistancePlanView.js') }}"></script>
+
+<!-- custom  js files -->
+<script src="{{ url_for('static', filename='js/temporaryDataContainer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}

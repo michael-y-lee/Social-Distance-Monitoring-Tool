@@ -1,0 +1,365 @@
+{% extends 'base.html' %}
+
+{% block head %}
+		<title>Social Distancing Monitor</title>
+
+		<!-- Load CSS libraries -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+
+		<!-- GOOGLE FONTS -->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic,300italic' rel='stylesheet' type='text/css'>
+		<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+{% endblock %}
+
+{% block body %}
+
+	<div class="container-fluid">
+
+		<div class="row justify-content-center">
+			<div class="align-self-center">
+				<p class="creditsText" >AC295 - Practicum 1 - Next Top Model</p>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="align-self-center">
+
+				<div id="camera-map"></div>
+
+<!--				<div class="col-12">-->
+<!--					<div class="row justify-content-center">-->
+<!--						<div class="align-self-center">-->
+<!--							<div class="col-4">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<div id="camera-map"></div>-->
+<!--											&lt;!&ndash;camera map &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<p id="cam-city">Cam #01 - Bond Street, London UK</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<p id="cam-location">Location: DEFAULT HERE</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<h3>Camera Videos:</h3>-->
+<!--										<p>Please select a video below</p>-->
+<!--										<div id="camera-clips"></div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+
+
+<!--							<div class="col-4">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<h1>Social Distancing Monitor</h1>-->
+<!--										&lt;!&ndash; page title &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<div id="sd-video"></div>-->
+<!--										<div id="sd-stats-box"></div>-->
+<!--										Social Distancing-->
+<!--										&lt;!&ndash;social distancing video &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<div id="mw-video"></div>-->
+<!--										<div id="mw-stats-box"></div>-->
+<!--										Mask Wearing-->
+<!--										&lt;!&ndash;mask wearing video &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										Video Playback:-->
+<!--										<button>Play/Pause</button>-->
+<!--										<button>Restart</button>-->
+<!--										00:00:00-->
+<!--										&lt;!&ndash;video controls wearing video &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+
+
+<!--							<div class="col-4">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<div id="plan-view"></div>-->
+<!--										Social Distancing-->
+<!--										&lt;!&ndash; plan view playback &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="align-self-center">-->
+<!--										<div id="compliance-chart"></div>-->
+<!--										&lt;!&ndash; compliance chart &ndash;&gt;-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+
+		<hr class="popRule">
+		<div class="row justify-content-center">
+			<div class="align-self-center">
+				<p class="footerText">Professor: Pavlos Protopapas | Institute for Applied Computational Science | <b class="footerPop">Harvard University</b> | Student Work by: Michael Lee, Jose Lopez, Micah Nickerson, Victor Sheng</p>
+			</div>
+		</div>
+
+	</div>
+
+<!--		<div class="row justify-content-center">-->
+<!--			<div class="align-self-center">-->
+<!--				<p class="creditsText" >AC295 - Practicum 1 - Next Top Model</p>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--		<div class="row justify-content-center">-->
+<!--			<div class="align-self-center">-->
+<!--				<h1 class="heroText">ArtSearch</h1>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		<div class="row">-->
+
+
+<!--			<div class="col-4" id="simSectionContainer">-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--						<h5 class="sectionText" id="simSectionTitle">Image Similarity</h5>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--						<div class="col-12">-->
+<!--							<div class="row justify-content-center">-->
+<!--								<div class="col-8" id="userImageContainer">-->
+<!--									<img src="{{ url_for('static', filename='img/missingArtistGrn.jpg') }}" id="userImagePreview" class="img-fluid-small" title="No Image?????">-->
+<!--								</div>-->
+<!--								<div class="col-4" id="simResultsContainer">-->
+<!--									<div class="align-self-center">-->
+<!--										<p class="simSectionText" id="simSectionDetailTop">-->
+<!--											</br>-->
+<!--											Cosine</br>-->
+<!--											Distance-->
+<!--											</br>-->
+<!--										</p>-->
+<!--										<h1 class="simSectionText" id="simSectionPercent" >{% for e in returnedcosine %}{{e.cosine_distance}}{% endfor %}</h1>-->
+<!--										<h5 class="sectionText simSectionText" id="simSectionDetailBot">similar</h5>-->
+<!--										</br>-->
+<!--									</div>-->
+<!--									<div class="row justify-content-center">-->
+<!--										<div class="align-self-center">-->
+<!--											<div id="summaryGraphSpace"></div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+<!--							<div id="uploadErrorText"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+
+<!--			<div class="col-4">-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--						<div id="searchResults">-->
+<!--							<p></p>-->
+<!--							<h3 class="sectionText">Search Results:</h3>-->
+<!--							{% for e in returnedrecord %}-->
+<!--								<form action="/searchresult" method="POST">-->
+<!--									<input class="selected-record-btn" type="submit" name="selectedrecord" value="{{e.file_id}}">&nbsp;&nbsp; <b>"{{e.Title}}"</b></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; by {{e.Artist}}</br></br>-->
+<!--&lt;!&ndash;									<input class="selected-record-btn" type="submit" name="selectedrecord" value="{{e.file_id}}"><b>"{{e.Title}}"</b></br>by {{e.Artist}}&ndash;&gt;-->
+<!--								</form>-->
+<!--							{% endfor %}-->
+<!--						</div>-->
+<!--							<img src="https://storage.googleapis.com/artsearchbucket/img/loadingArtistGrn.jpg" id="paintingImage" class="img-fluid" title="loading...">-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="col-4">-->
+
+<!--				<div class="col-8 detailCol">-->
+<!--					<div class="row justify-content-center contentRow">-->
+<!--						<div class="col-12">-->
+<!--							<div id="imageDetailContainer">-->
+<!--								<hr class="paintingRule">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="col-3">-->
+<!--										<p class="detailTitle">Artist:</p>-->
+<!--									</div>-->
+<!--									<div class="col-9">-->
+<!--										<p class="detailText" id="artistName">{% for e in returnedrecord %}{{e.Artist}}{% endfor %}</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<hr class="paintingRule">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="col-3">-->
+<!--										<p class="detailTitle">Period:</p>-->
+<!--									</div>-->
+<!--									<div class="col-9">-->
+<!--										<p class="detailText" id="completedDate">{% for e in returnedrecord %}{{e.Date}}{% endfor %}</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<hr class="paintingRule">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="col-3">-->
+<!--										<p class="detailTitle">Medium:</p>-->
+<!--									</div>-->
+<!--									<div class="col-9">-->
+<!--										<p class="detailText" id="mediumText">{% for e in returnedrecord %}{{e.Object_type}}, {% endfor %}{% for e in returnedrecord %}{{e.Medium}}{% endfor %}</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<hr class="paintingRule">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="col-3">-->
+<!--										<p class="detailTitle">Dimensions:</p>-->
+<!--									</div>-->
+<!--									<div class="col-9">-->
+<!--										<p class="detailText" id="dimsText">{% for e in returnedrecord %}{{e.Dimensions}}{% endfor %}</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<hr class="paintingRule">-->
+<!--								<div class="row justify-content-center">-->
+<!--									<div class="col-3">-->
+<!--										<p class="detailTitle">Collection:</p>-->
+<!--									</div>-->
+<!--									<div class="col-9">-->
+<!--										<p class="detailText" id="collectionText">{% for e in returnedrecord %}{{e.Collection}}{% endfor %}</p>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--								<hr class="paintingRule">-->
+<!--							</div>-->
+
+<!--							<div id="searchResultStatus"></div>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--				</div>-->
+
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		<div class="row justify-content-center">-->
+<!--			<div class="align-self-center">-->
+
+<!--				<p><b id="quoteMarkL">&ldquo; </b><i id="paintingTitle">{% for e in returnedrecord %}{{e.Title}}{% endfor %}</i><b id="quoteMarkR">&nbsp &rdquo;</b></p>-->
+<!--			</div>-->
+<!--		</div>-->
+
+<!--		<div class="row">-->
+
+<!--			<div class="col-5">-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--						<h3 class="sectionText">Explore Images by Similarity:</h3>-->
+<!--						Upload your own image!-->
+<!--						<div class="input-group mb-3">-->
+
+<!--							<form action="/" method="POST" enctype="multipart/form-data" id="uploadbanner">-->
+<!--								<input type="file" name="similarityfileupload" id="similarity_id" placeholder="../your_image.jpg" onchange="showUserImagePreview(this)">-->
+<!--								<input class="submit-btn" type="submit" value="Search">-->
+<!--							</form>-->
+
+<!--						</div>-->
+
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="col-2">-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--			<div class="col-5">-->
+<!--				<div class="row justify-content-center">-->
+<!--					<div class="align-self-center">-->
+<!--						<h3 class="sectionText">Explore Images by Search:</h3>-->
+
+<!--						<div class="form-group">-->
+<!--							Search by:-->
+<!--							<form action="/" method="POST">-->
+<!--								<select class="metainput greybutton" id="searchSelectPref" name="metasearchtype">-->
+<!--									<option selected value="id">Image ID</option>-->
+<!--									<option value="title">Title</option>-->
+<!--									<option value="artist">Artist</option>-->
+<!--								</select>-->
+<!--								<input type="text" class="metainput" name="metadatasearchterm" id="file_id" placeholder="gap_11111.jpg">-->
+<!--								<input class="submit-btn" type="submit" name="metadataidnamesubmit" value="Search"></br>-->
+<!--								<small id="emailHelp" class="form-text text-muted">Valid ID formats are <i>XXXXX</i> or <i>gap_XXXXX.jpg</i></small>-->
+<!--							</form>-->
+<!--						</div>-->
+
+<!--&lt;!&ndash;						<p></p> placeholder for aftertext&ndash;&gt;-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--		</div>-->
+
+
+<!--	{% for e in returnedrecord %}{{e.file_id}},{{e.cosine_distance}}, {{e.inputFile}}{% endfor %}-->
+
+	<!--identifier label for JS backend interconnect! DO NOT REMOVE ME-->
+	<div class="tinyhiddenLayoutText" id="searchtypeflag">
+		{{searchtype}}
+	</div>
+	<div class="tinyhiddenLayoutText" id="currentImageFileID">
+		{% for e in returnedrecord %}{{e.file_id}}{% endfor %}
+	</div>
+	<div class="tinyhiddenLayoutText" id="cosineSim">
+		{% for e in returnedcosine %}{{e.cosine_distance}}{% endfor %}
+	</div>
+	<div class="tinyhiddenLayoutText" id="userimagefilename">
+		{{returneduserimagefilename}}
+	</div>
+	<div class="tinyhiddenLayoutText" id="imagereadflag">
+		{{imagereadreturn}}
+	</div>
+
+	<!-- embedding JS libraries -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+	<!-- Leaflet Map Library -->
+	<script src="{{ url_for('static', filename='js/leaflet.js') }}"></script>
+
+	<!-- d3 -->
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+
+	<!-- Visualization objects -->
+	<script src="{{ url_for('static', filename='js/cameraMap.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/videoDisplay.js') }}"></script>
+
+	<!-- custom  js files -->
+    <script src="{{ url_for('static', filename='js/temporaryDataContainer.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+{% endblock %}
