@@ -4,10 +4,7 @@
 
 *AC295 | Advanced Practical Data Science | Institute for Applied Computational Science | Harvard University*  
 
-#### Presentation Links
-- Presentation Video: [Link](https://drive.google.com/file/d/1H1G7l9GzJv0wj8EKw1QZMpf60dOB_iMP/view?usp=sharing) <br/>
-- Presentation Slides: [Link](https://docs.google.com/presentation/d/1eFaaRnLNPVHD59aLsPiCW_Clw-IgCtz4onPosaxBjn8/edit?usp=sharing) <br/>
-- Medium Article: [Link](https://medium.com/p/52b13d101385/edit) 
+Please refer to our Medium Article for a description of this project: [Link](https://medium.com/p/52b13d101385/edit) 
 
 ##### Directories 
 - **frontend** <br/>
