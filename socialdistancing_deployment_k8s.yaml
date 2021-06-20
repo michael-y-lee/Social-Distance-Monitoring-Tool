@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: socialdistancing-webapp-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: socialdistancing-db-app
+  template:
+    metadata:
+      labels:
+        app: socialdistancing-db-app
+    spec:
+      containers:
+      - name: socialdistancing-db-container
+        image: gcr.io/ac295-data-science-289403/socialdistancing_webapp:db
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8082
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: socialdistancing-webapp-db-service  # 🍟
+spec:
+    selector:
+        app: socialdistancing-db-app
+    ports:
+      - protocol: TCP
+        port: 8082
+        targetPort: 8082
