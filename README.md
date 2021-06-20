@@ -1,6 +1,6 @@
-# AC295 Final Project - Milestone 4 Submission
+# AC295 Final Project - COVID-19 Social Distance Monitoring and Mask Detection Tool
 
-*Next Top Model*: Michael Lee, Jose Lopez, Micah Nickerson, Victor Sheng
+*Team Next Top Model*: Michael Lee, Jose Lopez, Micah Nickerson, Victor Sheng
 
 *AC295 | Advanced Practical Data Science | Institute for Applied Computational Science | Harvard University*  
 
@@ -9,10 +9,7 @@
 - Presentation Slides: [Link](https://docs.google.com/presentation/d/1eFaaRnLNPVHD59aLsPiCW_Clw-IgCtz4onPosaxBjn8/edit?usp=sharing) <br/>
 - Medium Article: [Link](https://medium.com/p/52b13d101385/edit) 
 
-#### Project Deployment
-- Website: www.socialdistancingcalculator.xyz
-
-##### Directories inside deployment folder
+##### Directories 
 - **frontend** <br/>
 *This directory contains the files required to launch the frontend container and to display the website interface.*
 
@@ -22,15 +19,9 @@
 - **socialdistancing** <br/>
 *This directory contains the files required to launch the social distancing backend container and to perform social distancing video processing.*
 
-##### Files inside deployment folder
-- **frontend_deployment_k8s.yaml** <br/>
-- **maskdetection_configmap.yaml** <br/>
-- **maskdetection_deployment_k8s.yaml** <br/>
-- **socialdistancing_configmap.yaml** <br/>
-- **socialdistancing_deployment_k8s.yaml** <br/>
-*These files are used to set up the deployments and configmaps in the Kubernetes Engine.*
-- **ingress_resource.yaml** <br/>
-*This file sets up the Ingress controller allowing external traffic to communicate with the website interface.*
+- **socialdistancing** <br/>
+*This directory contains the files used to set up the deployments and configmaps in the Kubernetes Engine and for the Ingress controller.*
+
 
 #### How to Run Deployment
 
@@ -42,7 +33,7 @@ Download YOLOv4 model weights: <br/>
 # Start in deployment directory
 
 # Create environmental variable 
-export PROJECT_ID=ac295datascience # update based on your GCP Project ID
+export PROJECT_ID=_______ # update based on your GCP Project ID
 
 # Build the Docker containers
 cd ../frontend
@@ -59,11 +50,11 @@ docker push gcr.io/${PROJECT_ID}/socialdistancing_webapp:db
 docker push gcr.io/${PROJECT_ID}/frontend:webfe
 
 # Create the Kubernetes Cluster 
-gcloud container clusters create project-ac295-cluster --num-nodes 2 --machine-type e2-standard-2
+gcloud container clusters create project-cluster --num-nodes 2 --machine-type e2-standard-2
 
 # Deploy Kubernetes Configmaps, Deployments, and Services
 
-# IMPORTANT: You must replace our hardcoded Project ID (ac295-data-science-289403) in the image field of all 3 *_deployment_k8s.yaml files with your Project ID!
+# Note: The Project ID in the image field of all three *_deployment_k8s.yaml files should be updated your GCP Project ID
 kubectl create -f frontend_deployment_k8s.yaml
 kubectl create -f socialdistancing_configmap.yaml
 kubectl create -f socialdistancing_deployment_k8s.yaml
@@ -78,5 +69,5 @@ kubectl apply -f ingress_resource.yaml
 # If you do not have a domain, use kubectl get all to find the external IP address of the Ingress Controller and access the website through the external IP address.
 
 # Shut down Kubernetes Cluster when finished 
-gcloud container clusters delete project-ac295-cluster
+gcloud container clusters delete project-cluster
 ```
